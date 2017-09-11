@@ -38,6 +38,20 @@ public class P1 {
 
         //runs in O(n) time and uses up to O(y) space, where y is the length of smallest array.
 
+        //can we improve the space complexity? we can iterate by values together using a while loop and
+
+    }
+
+    public static ArrayList<Integer> intersectionImprovedSpaceComplexity(int[] l1, int[] l2) {
+        ArrayList<Integer> intersection = new ArrayList<>();
+
+        int indexL1 = 0;
+        int indexL2 = 0;
+
+        //we will iterate through the
+
+
+
     }
 
     public static void main(String[] args) {
