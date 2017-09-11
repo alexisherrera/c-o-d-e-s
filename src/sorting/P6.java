@@ -19,7 +19,7 @@ public class P6 {
         int leftLimit = -1;
         int rightLimit = intervals.size();
 
-        //find left limit. left maxmimal min or eq
+        //find left limit. left maximal min or eq
         for (int i = 0; i < intervals.size(); i++) {
             if (intervals.get(i)[0] <= interval[0]) {
                 leftLimit = i;
@@ -30,11 +30,11 @@ public class P6 {
         }
 
         //find right limit. right minimum max or eq
-        for (int i = intervals.size() - 1; i >= 0; i--) {
-            if (intervals.get(i)[1] >= interval[1]) {
+        for (int i = leftLimit; i < intervals.size(); i++) {
+            if (intervals.get(i)[1] <= interval[1]) {
                 rightLimit = i;
             }
-            else if (intervals.get(i)[1] < interval[1]) {
+            else if (intervals.get(i)[1] > interval[1]) {
                 break;
             }
         }
@@ -58,6 +58,11 @@ public class P6 {
         return updatedIntervals;
     }
 
+    //this is the way that it is done in EPI
+    public static ArrayList<int[]> mergingIntervalsEPI(ArrayList<int[]> intervals, int[] interval) {
+
+    }
+
     public static void main(String[] args) {
         int[][] intervals = {{-4, -1}, {0, 2}, {3, 6}, {7, 9}, {11, 12}, {14, 17} };
         ArrayList<int[]> list = new ArrayList<>();
@@ -65,7 +70,13 @@ public class P6 {
         for (int[] i : intervals) {
             list.add(i);
         }
-        int[] interval = {1, 8};
+        System.out.println("original intervals");
+
+        for (int[] i : intervals) {
+            System.out.print("[" + i[0] + "], [" + i[1] + "]    ");
+        }
+        System.out.println("");
+        int[] interval = {0, 13};
 
         ArrayList<int[]> updatedList = mergeIntervals(list, interval);
 
