@@ -85,7 +85,7 @@ public class P6 {
 
         while (index < intervals.size()) {
             if (intervals.get(index)[0] <= interval[1])  {
-                interval = union(interval, intervals.get(index));
+                union(interval, intervals.get(index));
                 index++;
             }
             else {
@@ -100,18 +100,23 @@ public class P6 {
             index++;
         }
 
+
+        //key take aways: if we can assume that the given intervals are well ordered, in the sense that there are
+        //no errors in the input, an interval does NOT intersect another interval if and only
+        //if another intervals right endpoint is before the left endpoint of another interval.
+
+        //likewise, an interval intersects another interval if the left endpoint of one interval is less than or eq the
+        //right endpoint of another interval.
+
         return result;
     }
 
     //function to find the union of two intersecting arrays
-    public static int[] union(int[] i1, int[] i2) {
-        int[] result= new int[2];
-
+    public static void union(int[] i1, int[] i2) {
         //basically extending our boundaries to include the different ranges. This works by making the min the smaller
         //of the two values and the max the larger of the two values
-        result[0] = Math.min(i1[0], i2[0]);
-        result[1] = Math.max(i1[1], i2[1]);
-        return result;
+        i1[0] = Math.min(i1[0], i2[0]);
+        i1[1] = Math.max(i1[1], i2[1]);
     }
 
     public static void main(String[] args) {
@@ -127,7 +132,7 @@ public class P6 {
             System.out.print("[" + i[0] + "], [" + i[1] + "]    ");
         }
         System.out.println("");
-        int[] interval = {0, 13};
+        int[] interval = {-200, -5};
 
         ArrayList<int[]> updatedList = mergingIntervalsEPI(list, interval);
 
