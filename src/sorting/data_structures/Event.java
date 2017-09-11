@@ -1,4 +1,4 @@
-package sorting.event_p5;
+package sorting.data_structures;
 
 /**
  * Created by alexisherrera on 9/11/17.

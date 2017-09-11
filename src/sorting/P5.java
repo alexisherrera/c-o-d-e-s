@@ -1,6 +1,6 @@
 package sorting;
 
-import sorting.event_p5.Event;
+import sorting.data_structures.Event;
 
 import java.util.ArrayList;
 import java.util.Collections;
