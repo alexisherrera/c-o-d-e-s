@@ -108,6 +108,9 @@ public class P6 {
         //likewise, an interval intersects another interval if the left endpoint of one interval is less than or eq the
         //right endpoint of another interval.
 
+
+        //O(n) time and O(1) space!!!!!
+
         return result;
     }
 
