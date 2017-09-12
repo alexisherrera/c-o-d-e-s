@@ -40,6 +40,11 @@ public class P10 {
         ListNode<Integer> halfTwo = mergesort(slow);
 
         return P1.merge(halfOne, halfTwo);
+
+        //takes O(nlgn) time and uses O(lgn) space. more efficient space wise for linked lists
+        //because no need for auxilary array, we can append/remove elements to ends (which is all we do in mergestep)
+        //in O(1) time for linked lists. thus space complexity is dominated by recursion stack, which is at most
+        //O(lgn).
     }
 
 
@@ -67,8 +72,6 @@ public class P10 {
             System.out.println(sortedList.d);
             sortedList = sortedList.next;
         }
-
-
 
     }
 }
