@@ -26,7 +26,7 @@ public class P4 {
         PriorityQueue<Star> maxHeap = new PriorityQueue<>(k, new Comparator<Star>() {
             @Override
             public int compare(Star o1, Star o2) {
-                return Integer.compare(o1.distanceToOrigin(), o2.distanceToOrigin()) * -1;
+                return Double.compare(o1.distanceToOrigin(), o2.distanceToOrigin()) * -1;
             }
         });
 
@@ -61,7 +61,7 @@ public class P4 {
     }
 
     public static void main(String[] args) {
-
+        //test
     }
 
 
