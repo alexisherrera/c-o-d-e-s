@@ -30,7 +30,7 @@ public class P3 {
             minheap.add(nums[i]);
         }
 
-        //iterate from 0 till the end of the array printing the top of the min heap and adding
+        //iterate from 0 until the end of the array printing the top of the min heap and adding
         //the element the new kth element
         for (int i = 0; i < nums.length; i++) {
             int minAtPosition = minheap.remove();
