@@ -75,6 +75,10 @@ public class P1 {
 
 
 
+        //complexity: we start with klgk to put them all in the heap, where k is the number of files. Then
+        //for the remaining elelments lets say n, we always remove one element from heap which is O(lgk), and insert
+        //an element into the heap which is O(lgk). this is O(2lgk). We do this n times, so we get a running time
+        //complexity of (nlgk).
         return result;
 
     }
