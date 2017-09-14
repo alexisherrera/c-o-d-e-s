@@ -26,5 +26,9 @@ public class Practice {
         while (!pq.isEmpty()) {
             System.out.println(pq.remove());
         }
+
+        //it takes O(n) time to construct a heap out of an array (or a collection in java)
+        //O(lgn) to delete and update a heap.
+        //O(1) to peek at the top of the heap.
      }
 }
