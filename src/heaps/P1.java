@@ -80,7 +80,29 @@ public class P1 {
     }
 
     public static void main(String[] args) {
+        List<Integer> l1 = new ArrayList<>();
+        l1.add(3);
+        l1.add(5);
+        l1.add(7);
 
+        List<Integer> l2 = new ArrayList<>();
+        l2.add(0);
+        l2.add(6);
+
+        List<Integer> l3 = new ArrayList<>();
+        l3.add(0);
+        l3.add(6);
+        l3.add(28);
+
+        List<List<Integer>> sequences = new ArrayList<>();
+        sequences.add(l1);
+        sequences.add(l2);
+        sequences.add(l3);
+
+        List<Integer> mergedLists = mergeOrderedSequnces(sequences);
+
+        //WEEWEWEW DID IT ~!!!!~!
+        System.out.println(mergedLists);
     }
 
 }
