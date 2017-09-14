@@ -1,5 +1,6 @@
 package heaps;
 
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.PriorityQueue;
@@ -20,27 +21,6 @@ public class P1 {
     //it comes from and the index of that array).
 
     //do this with numbers instead of files
-    public static List<Integer> mergeOrderedSequnces(List<List<Integer>> sequences) {
-
-        //make our heap bring the smallest value to the top by the HeapEntrys value!!!
-        PriorityQueue<HeapEntry> minHeap = new PriorityQueue<>(sequences.size(), new Comparator<HeapEntry>() {
-            @Override
-            public int compare(HeapEntry o1, HeapEntry o2) {
-                return Integer.compare(o1.value, o2.value);
-            }
-        });
-
-
-
-
-
-
-
-
-
-    }
-
-
 
     //class for the entries in our min heap that tell us where this value came from, and the index from which it was
     //taken.
@@ -53,6 +33,54 @@ public class P1 {
             listOrigin = lO;
             listIndex = lI;
         }
+    }
+
+
+    //function to merge the files
+    public static List<Integer> mergeOrderedSequnces(List<List<Integer>> sequences) {
+
+        //make our heap bring the smallest value to the top by the HeapEntrys value!!!
+        PriorityQueue<HeapEntry> minHeap = new PriorityQueue<>(sequences.size(), new Comparator<HeapEntry>() {
+            @Override
+            public int compare(HeapEntry o1, HeapEntry o2) {
+                return Integer.compare(o1.value, o2.value);
+            }
+        });
+
+
+        //lets fill the heap with the top element from each sequench
+        for (int i = 0; i < sequences.size(); i++) {
+            List<Integer> seq = sequences.get(i);
+            minHeap.add(new HeapEntry(seq.get(0), i, 0));
+        }
+
+
+        //now our merging step: lets first initialize a list for our result
+        List<Integer> result = new ArrayList<>();
+
+        //now the merging step
+        while (!minHeap.isEmpty()) {
+            HeapEntry smallestEntry = minHeap.remove();
+            int originList = smallestEntry.listOrigin;
+            int indexAtList = smallestEntry.listIndex;
+
+            //check that we can retrieve an element from the list it came from. if so add to heap
+            if (indexAtList + 1 < sequences.get(originList).size()) {
+                minHeap.add(new HeapEntry(sequences.get(originList).get(indexAtList + 1), originList, indexAtList + 1));
+            }
+
+            //if not, that sequence is empty and we can just ignore it. Now lets add the minheap entry to our result list.
+            result.add(smallestEntry.value);
+        }
+
+
+
+        return result;
+
+    }
+
+    public static void main(String[] args) {
+
     }
 
 }
