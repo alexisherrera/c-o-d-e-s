@@ -61,7 +61,30 @@ public class P4 {
     }
 
     public static void main(String[] args) {
-        //test
+        Star s1 = new Star(1,2,4);
+        Star s2 = new Star(20,-2,1);
+        Star s3 = new Star(4,4,2);
+        Star s4 = new Star(1,90,5);
+        Star s5 = new Star(80,32,1);
+        Star s6 = new Star(-5,2,0);
+        Star s7 = new Star(3,3,3);
+
+
+        List<Star> stars = new ArrayList<>();
+        stars.add(s1);
+        stars.add(s2);
+        stars.add(s3);
+        stars.add(s4);
+        stars.add(s5);
+        stars.add(s6);
+        stars.add(s7);
+
+        List<Star> kClosestStars = kClosestStars(stars, 3);
+
+        for (Star s: kClosestStars) {
+            System.out.println(s.distanceToOrigin());
+        }
+
     }
 
 
