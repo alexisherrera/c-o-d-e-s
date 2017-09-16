@@ -3,7 +3,7 @@ package dynamic_programming.bruteforce;
 /**
  * Created by alexisherrera on 9/15/17.
  */
-public class MaxSubArrBF {
+public class MaxSubArrProcess {
     //brute force for maximum subarray problem
 
     public static int maxSub(int[] nums) {
