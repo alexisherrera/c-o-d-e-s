@@ -1,6 +1,7 @@
 package dynamic_programming;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -11,7 +12,8 @@ public class P1 {
 
     //write a program that takes a final score (n) and a list of scores for individual plays
     //find number of combinations of plays that result in final score
-    public static int playCombos(int finalScore, List<Integer> playScores, List<Integer> disOne, int start) {
+    public static int playCombos(int finalScore, List<Integer> playScores, List<Integer> disOne, int start,
+                                 HashMap<String, Integer> memo) {
 
 
         //we can solve this by doing a depth first search of subtracting different scores from the final
@@ -25,6 +27,11 @@ public class P1 {
         int sum = 0;
         int play = playScores.get(start);
 
+        //we can memo by using hash-map that maps from index and remaining value.
+        String k = finalScore + "-" + start;
+
+        if (memo.containsKey(k)) { return memo.get(k); }
+
         //go through all the choices assuming a particular number of moves taken by the step
         for (int i = 0; i * play <= finalScore; i++) {
 
@@ -33,21 +40,23 @@ public class P1 {
                 disOne.add(play);
             }
 
-            sum = sum + playCombos(finalScore - (i * play), playScores, disOne, start + 1);
+            sum = sum + playCombos(finalScore - (i * play), playScores, disOne, start + 1, memo);
 
             for (int j = 0; j < i; j++) {
                 disOne.remove(disOne.size() - 1);
             }
         }
+
+        memo.put(k, sum);
         return sum;
     }
 
     public static void main(String[] args) {
         List<Integer> l = new ArrayList<>();
         List<Integer> disOne = new ArrayList<>();
+        l.add(1);
         l.add(2);
         l.add(3);
-        l.add(7);
-        System.out.println(playCombos(12, l, disOne, 0));
+        System.out.println(playCombos(20, l, disOne, 0, new HashMap<>()));
     }
 }
