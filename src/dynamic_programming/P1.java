@@ -49,6 +49,8 @@ public class P1 {
 
         memo.put(k, sum);
         return sum;
+
+        //running time is
     }
 
     public static void main(String[] args) {
@@ -57,6 +59,6 @@ public class P1 {
         l.add(1);
         l.add(2);
         l.add(3);
-        System.out.println(playCombos(20, l, disOne, 0, new HashMap<>()));
+        System.out.println(playCombos(4, l, disOne, 0, new HashMap<>()));
     }
 }
