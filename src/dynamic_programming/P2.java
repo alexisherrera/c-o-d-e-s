@@ -37,11 +37,38 @@ public class P2 {
         }
 
         //why does this work when you consider characters from the end rather than from the front?
+        //they both work similarly.
+    }
+
+    public static int minEditsForward(String s1, String s2, int index1, int index2) {
+        //check if either string is null or index surpasses one of them. this also takes care of inserting
+        //characters to our string
+        if (index1 >= s1.length() && index2 >= s2.length()) { return 0; }
+        if (index1 >= s1.length()) {
+            return s2.length() - index2;
+        }
+        if (index2 >= s2.length()) {
+            return s1.length() - index1;
+        }
+
+        //check at the current index: check the significane of either doing a sub, deletion, which is skipping
+        if (s1.charAt(index1) != s2.charAt(index2)) {
+            int sub = 1 + minEditsForward(s1, s2, index1 + 1, index2 + 1);
+            int deletion1 = 1 + minEditsForward(s1, s2, index1 + 1, index2);
+            int deletion2 = 1 + minEditsForward(s1, s2, index1, index2 + 1);
+            return Math.min(sub, Math.min(deletion1, deletion2));
+        }
+        else {
+            return minEditsForward(s1, s2, index1 + 1, index2 + 1);
+        }
+
+        //why does this work when you consider characters from the end rather than from the front?
+        //they both work similarly
     }
 
 
     public static void main(String[] args) {
-        System.out.println(minEdits("Carthorse", "Orchestra"));
+        System.out.println(minEditsForward("Carthorse", "Orchestra", 0, 0));
     }
 
 
