@@ -38,6 +38,9 @@ public class P2 {
 
         //why does this work when you consider characters from the end rather than from the front?
         //they both work similarly.
+
+
+        //now we have to memoize, this will allow us to
     }
 
     public static int minEditsForward(String s1, String s2, int index1, int index2) {
@@ -51,7 +54,7 @@ public class P2 {
             return s1.length() - index1;
         }
 
-        //check at the current index: check the significane of either doing a sub, deletion, which is skipping
+        //check at the current index: check the significance of either doing a sub, deletion, which is skipping
         if (s1.charAt(index1) != s2.charAt(index2)) {
             int sub = 1 + minEditsForward(s1, s2, index1 + 1, index2 + 1);
             int deletion1 = 1 + minEditsForward(s1, s2, index1 + 1, index2);
@@ -68,7 +71,7 @@ public class P2 {
 
 
     public static void main(String[] args) {
-        System.out.println(minEditsForward("Carthorse", "Orchestra", 0, 0));
+        System.out.println(minEditsForward("Saturday", "Sundays", 0, 0));
     }
 
 
