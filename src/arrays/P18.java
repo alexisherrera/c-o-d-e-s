@@ -2,6 +2,7 @@ package arrays;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Stack;
 
 /**
  * Created by alexisherrera on 9/19/17.
@@ -90,7 +91,7 @@ public class P18 {
 
 
 
-    public List<Integer> spiral(int[][] matrix) {
+    public static List<Integer> spiral(int[][] matrix) {
         //another way to approach this problem is by using index offsets to our advantage. We know that each
         //time we compute the spiral ordering of a layer, we can peel that layer off and go to the next inner level
 
@@ -101,13 +102,13 @@ public class P18 {
         List<Integer> result = new ArrayList<>();
 
         for (int offset = 0; offset < offSetLimit; offset++) {
-
+            computeSpiralWithOffset(matrix, offset, result);
         }
-
+        return result;
     }
 
     //helper function to compute spiral with the offset
-    public void computeSpiralWithOffset(int[][] matrix, int offset, List<Integer> result) {
+    public static void computeSpiralWithOffset(int[][] matrix, int offset, List<Integer> result) {
 
         //will only happen if we have an odd-length matrix. In this case we want the middle eleement;
         if (offset == matrix.length - 1 - offset) {
@@ -127,17 +128,35 @@ public class P18 {
 
 
         //collect right most col by iterating from offset row to bottomLimit
-        int bottomLimit = matrix.length - offset - 1;
-        for (int row = offset; row < bottomLimit; row++) {
+        int bottomRightLimit = matrix.length - offset - 1;
+        for (int row = offset; row < bottomRightLimit; row++) {
+            result.add(matrix[row][matrix.length - 1 - offset]);
+        }
 
+        //collect the bottom row n-1 elements in reverse order
+        for (int col = matrix[0].length - 1 - offset; col > offset; col--) {
+            result.add(matrix[matrix.length - 1 - offset][col]);
         }
 
 
+        //collect the leftmost col n-1 elements in rever
+        for (int row = matrix.length - 1; row > offset; row--) {
+            result.add(matrix[row][offset]);
+        }
+
+    }
 
 
+    public static void main(String[] args) {
+        int[][] m = {
+                    {1, 2, 4},
+                    {6, 9, 20},
+                    {-3, 800, 0}
+                    };
 
 
-
+        //should be 1,2,4,20,0,800, -3, 6, 9
+        System.out.println(spiral(m));
 
     }
 
