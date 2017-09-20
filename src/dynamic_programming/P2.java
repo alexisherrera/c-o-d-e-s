@@ -40,7 +40,8 @@ public class P2 {
         //they both work similarly.
 
 
-        //now we have to memoize, this will allow us to
+        //now we have to memoize, this will allow us to reduce the running time from O(3(^n)) to
+        //O(number of subproblems * time to complete each subproblem)
     }
 
     public static int minEditsForward(String s1, String s2, int index1, int index2) {

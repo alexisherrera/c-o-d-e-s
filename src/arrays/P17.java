@@ -33,7 +33,7 @@ public class P17 {
             }
         }
 
-
+        //we check every el board in O(n^2) time and we do it 3 times therefore our time is O(n^2)
         return true;
     }
 
