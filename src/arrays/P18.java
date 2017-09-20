@@ -105,6 +105,7 @@ public class P18 {
             computeSpiralWithOffset(matrix, offset, result);
         }
         return result;
+        //runs in O(n^2) time.
     }
 
     //helper function to compute spiral with the offset
