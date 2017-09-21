@@ -1,5 +1,7 @@
 package dynamic_programming;
 
+import java.util.HashMap;
+
 /**
  * Created by alexisherrera on 9/18/17.
  */
@@ -9,12 +11,12 @@ public class P2 {
     //essentially compute the minmum number of edits in order to make 2 strings the same
     public static int minEdits(String s1, String s2) {
 
-        return minEdits(s1, s2,s1.length() - 1, s2.length() - 1);
+        return minEdits(s1, s2,s1.length() - 1, s2.length() - 1, new HashMap<>());
 
 
     }
 
-    public static int minEdits(String s1, String s2, int index1, int index2) {
+    public static int minEdits(String s1, String s2, int index1, int index2, HashMap<String, Integer> memo) {
         //check if either string is null or index surpasses one of them. this also takes care of inserting
         //characters to our string
         if (index1 < 0 && index2 < 0) { return 0; }
@@ -25,16 +27,34 @@ public class P2 {
             return index1 + 1;
         }
 
+        String k = "" + index1 + "-" + index2 +"";
+
+        if (memo.containsKey(k)) {
+            return memo.get(k);
+        }
+
+
+        int solution = 0;
         //check at the current index: check the significane of either doing a sub, deletion, which is skipping
         if (s1.charAt(index1) != s2.charAt(index2)) {
-            int sub = 1 + minEdits(s1, s2, index1 - 1, index2 - 1);
-            int deletion1 = 1 + minEdits(s1, s2, index1 - 1, index2);
-            int deletion2 = 1 + minEdits(s1, s2, index1, index2 - 1);
-            return Math.min(sub, Math.min(deletion1, deletion2));
+            int sub = 1 + minEdits(s1, s2, index1 - 1, index2 - 1, memo);
+            int deletion1 = 1 + minEdits(s1, s2, index1 - 1, index2, memo);
+            int deletion2 = 1 + minEdits(s1, s2, index1, index2 - 1, memo);
+            solution = Math.min(sub, Math.min(deletion1, deletion2));
         }
         else {
-            return minEdits(s1, s2, index1 - 1, index2 - 1);
+            solution = minEdits(s1, s2, index1 - 1, index2 - 1, memo);
         }
+
+        memo.put(k, solution);
+        return solution;
+
+
+        //the number of subproblems reduces to the numbers of index pairs which are s1.length * s2.length
+        //therefore the running time is O(nm)
+
+        //further we have O(nm) space complexity
+
 
         //why does this work when you consider characters from the end rather than from the front?
         //they both work similarly.
@@ -72,7 +92,7 @@ public class P2 {
 
 
     public static void main(String[] args) {
-        System.out.println(minEditsForward("Saturday", "Sundays", 0, 0));
+        System.out.println(minEdits("Saturday", "Sundays"));
     }
 
 
