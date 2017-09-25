@@ -23,7 +23,7 @@ public class P5 {
         if (index >= seq.length) { return true; }
 
         //error checking
-        if (row < 0 || col < 0 || row >= matrix.length || col > matrix[0].length) {
+        if (row < 0 || col < 0 || row >= matrix.length || col >= matrix[0].length) {
             return false;
         }
 
@@ -36,6 +36,20 @@ public class P5 {
         boolean bottom = search(matrix, seq, index + 1, row + 1, col);
 
         return (left || up || right || bottom);
+    }
+
+
+    public static void main(String[] args) {
+        int[][] matrix = {
+                {1, 2, 3},
+                {3, 4, 5},
+                {5, 6, 7}
+        };
+
+        int[] seq = {1, 3, 4, 6, 7, 5, 3, 2};
+
+        //should be true
+        System.out.println(searchSequence(matrix, seq));
     }
 
 
