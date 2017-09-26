@@ -41,12 +41,14 @@ public class P6 {
         //or excluding current clock (we do not reduce weight)
         currMaxVal = Math.max(currMaxVal, knapsackProb(clocks, index + 1, weightLeft, memo));
         memo.put(k, currMaxVal);
-        System.out.println("SIZE OF MAP: " + memo.size());
         return currMaxVal;
 
         //we can easily memo using the arguments, if we are at a particular index and the weightLeft is the same,
         //we should know what the max is. Therefore, we can use a hashtable, where our key is the index-weightleft
-        //and value is the maximum value we can hold.
+        //and value is the maximum value we can hold. <-- NOPE hashtable doesn't work. We need to look for a
+        //better way to memo. Will come back to this::...
+
+
 
         //This reduces our running time complexity to O(num of subproblems * RT of each). RT of each sub problem is
         //O(1)-- it is simple arithmetic. the number of subproblems is the different combinations of index and weight-left,
