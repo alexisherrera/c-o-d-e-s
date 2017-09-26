@@ -30,6 +30,12 @@ public class P7 {
         //could be returning null when the concat of all strings in set is valid. Therefore this approach is wrong
     }
 
+    public static String concatPossibleREC(Set<String> set, String s, int index) {
+        //one approach to take is to check prefixes. we check if a prefix exists in the set and then we remove it from
+        //the set. But then again, we cannot iterate from character to character. Instead we need to "build"
+        //our prefixes until we get a match with the set or when run out.
+        return null;
+    }
     public static void main(String[] args) {
         Set<String> set = new HashSet<>();
         set.add("a"); set.add("man"); set.add("a"); set.add("plan"); set.add("a"); set.add("canal");
