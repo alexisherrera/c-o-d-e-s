@@ -59,6 +59,8 @@ public class P1 {
             }
          }
          return result;
+
+        //this solution guarantees a runtime of O(lgN) and a space complexity of O(1).
     }
 
     //helper to find the first occurance of a value in an arr
