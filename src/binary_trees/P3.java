@@ -47,7 +47,7 @@ public class P3 {
         //n-1 nodes at first then n-2 then n-3 then n-4. This gives summation of order n^2.
     }
 
-    //another approach can be using a pre order traversal. we visit sub trees first. if it is in there we then
+    //another approach can be using a pre order traversal. we visit root first then sub trees. if it is in there we then
     //check if it is in the other then we return true;
 
 
@@ -69,10 +69,8 @@ public class P3 {
             return leftSearch;
         }
 
-        //this algorithm does not need to check if we cover a particular node at a node. It does this whilst
-        //determining weather the node we are at is the LCA. It does this by
-
-        //runs in O(n) time as it is post order traversal. we check subtrees before root. space is o(h) for same reason
+        //runs in O(n) time as it is preorder traversal. we check subtrees before root. space is o(h) for same reason
+        //this is a good problem in the sense that it is useful
     }
 
 

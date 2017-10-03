@@ -17,7 +17,7 @@ public class P2 {
         if (root == null) { return true; }
         return areSymmetric(root.left, root.right);
 
-        //take O(n) time because we reach each node once. O(h) space.
+        //take O(n) time because we reach each node once. O(h) space because recursive stack.
     }
 
     public static boolean areSymmetric(TreeNode r, TreeNode l) {
