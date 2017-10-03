@@ -38,13 +38,7 @@ public class P1 {
 
         //we need to figure out whether the height of our children and determine wheather they qualify to be balanced
         if (root == null) { return 0; }
-        int leftChild = isBalancedDFS(root.left);
-        int rightChild = isBalancedDFS(root.right);
-        if (leftChild == -1 || rightChild == -1) { return -1; }
-
-        int hDiff = Math.abs(leftChild - rightChild);
-        if (hDiff != -1 && hDiff != 0) { return 1 + Math.max(leftChild, rightChild); }
-        return -1;
+        return 0;
     }
 
 
@@ -54,6 +48,39 @@ public class P1 {
         return 1 + Math.max(height(root.left),height(root.right));
     }
 
-    //this will take
+    public static boolean isHeightBalanced(TreeNode root) {
+        //think about how to solve this: to identify that a tree is truly height balanced, we need to find the height
+        //of the left subtrees and the height of the right subtrees. They are only balanced if the heigh difference is
+        //1 or 0.
+
+        //lets compute the height of the trees as we go down the tree. we return -1 if the heights are balanced or the
+        //height of the tree if they are balanced. we can do this in a separate function
+
+
+        //now that we have made our function to determine height and evaluate height balanced-statefulness,
+        //all we need to do is call the function and check if we do retrieve the target error message
+        return findHeightAndBalanceState(root) != -1;
+    }
+
+    public static int findHeightAndBalanceState(TreeNode root) {
+        //no violation in BC --> therefore return the height
+        if (root == null) { return 0; }
+
+        //find the heights of left subtrees and right subtrees
+        int leftHeight = findHeightAndBalanceState(root.left);
+        int rightHeight = findHeightAndBalanceState(root.right);
+
+        //check if they our target indicator. we would like to bubble up our target if not true;
+        if (leftHeight == -1 || rightHeight == -1) { return -1; }
+
+        //now assuming our heights are all good. lets check if at this part of the tree the heights are balanced
+        if (Math.abs(leftHeight - rightHeight) == 0 || Math.abs(leftHeight - rightHeight) == 1) {
+            //bubble up the height at this node
+            return Math.max(leftHeight, rightHeight) + 1;
+        }
+        else {
+            return -1;
+        }
+    }
 
 }
