@@ -36,6 +36,17 @@ public class P3 {
 
         //algorithm takes O(n) to find cycle. Then it takes O(non-cyclic part) to find beginning which is
         //O(n)
+
+        //the reason it works to move one pointer to the beginning of a list is that:
+        //it takes M + p*l + k steps for slow pointer to meet with fast pointer.
+        //similarly it takes M + q*l + k steps for fast pointer to meet slow pointer. This
+        //ends up being 2(slowSteps) = fastSteps.
+
+        //by simplication we end up with M+K = (q-2p)*l. This means that M+K is a multiple of the length of
+        //the list ((q-2p) is an integer) AKA the factor. Thus, we only need to advance the pointer in the loop
+        //by M steps (because it is already offset by K steps). M is nothing but the distance from the beginning
+        //of the LL till the loop. THerefore when we move one pointer to the beginning of the list and it equals
+        //other node, we have reached the beginning of the cycle.
     }
 
     public static void main(String[] args) {
