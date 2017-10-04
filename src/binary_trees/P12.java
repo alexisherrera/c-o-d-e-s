@@ -54,5 +54,13 @@ public class P12 {
         root.right = helper(preorder, inorder, preorderIndex + skipForPreorder, targetIndex + 1, inorderE);
 
         return root;
+
+        //worst case complexity of this is O(n^2). Consider the case where we have an entirely skewed tree. The
+        //partition only sheds one element off and searching for root element in inorder data takes O(n) + O(n -1) +
+        //O(n-2) .. O(1). This sums to O(n^2). Space is O(h). We recurse down to the height of a tree.
+
+        //we can reduce the time complexity by initially creating a hashmap of mappings of element to index.
+
+        //this reduces the overall running time to O(n).
     }
 }
