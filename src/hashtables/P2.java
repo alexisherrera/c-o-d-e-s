@@ -1,49 +1,55 @@
 package hashtables;
 
 import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by alexisherrera on 9/8/17.
  */
 public class P2 {
+
     //is an anonymous letter constructable
 
-
-    //i will iterate through the letter first and fill up a hashmap consisting of characters in the letters and
-    //their frequency. after doing this i will iterate through the magazine and subtract the frequency
-    //from map for each letter in the magazine if the freq is greater than 0. At the end of the mag, if
-    //our hashmap has all keys with freq 0, then it is constructable.
-
     public static boolean isLetterConstructable(String letter, String mag) {
-        if (letter == null || mag == null) { return false; }
-        if (letter.length() == 0) { return true; }
-        if (letter.length() > mag.length()) { return false; }
 
-        HashMap<Character, Integer> map = new HashMap<>();
+        //create the map of characters for magazine
+        Map<Character, Integer> mapOfMag= new HashMap<>();
 
-        //iterate through letter and populate the map
-        for (char c : letter.toCharArray()) {
-            if (!map.containsKey(c)) {
-                map.put(c, 1);
+        //populate map with character counts in magazine
+        for (Character c: mag.toCharArray()) {
+            if (mapOfMag.containsKey(c)) {
+                mapOfMag.put(c, mapOfMag.get(c) + 1);
             }
             else {
-                map.put(c, map.get(c) + 1);
+                mapOfMag.put(c, 1);
             }
         }
 
 
-        //iterate through magazine until our map is empty
-        for (char c : mag.toCharArray()) {
-            if (map.containsKey(c) && map.get(c) > 0) {
-                map.put(c, map.get(c) - 1);
-
-                if (map.get(c) == 0) {
-                    map.remove(c);
-                    if (map.isEmpty()) { return true; }
+        //check if there are enough to create letter with it
+        for (Character c : letter.toCharArray()) {
+            if (!mapOfMag.containsKey(c)) { return false; }
+            else {
+                int count = mapOfMag.get(c);
+                if (count == 1) {
+                    mapOfMag.remove(c);
+                }
+                else {
+                    mapOfMag.put(c, count - 1);
                 }
             }
         }
 
-        return false;
+        return true;
+        //running time of O(max(n, n)). space: O(c).
+    }
+
+    public static void main(String[] args) {
+        String mag = "i am alex the is herrera, and I approve this messaged";
+        String letter = "alexis herrera approved the message";
+
+        //should be true
+        System.out.println(isLetterConstructable(letter, mag));
+
     }
 }
