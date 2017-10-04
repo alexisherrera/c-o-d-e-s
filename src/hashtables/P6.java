@@ -35,8 +35,8 @@ public class P6 {
         }
 
         return nearestPair;
-        //running time complexity is O(nm), where m is length of longest string.
-        //space is O(nm) --> if all words are distint, m is length
+        //running time complexity is O(n), n entries in array.
+        //space is O(n) --> if all words are distint
     }
 
 
