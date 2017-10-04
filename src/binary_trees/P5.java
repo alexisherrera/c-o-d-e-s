@@ -2,6 +2,8 @@ package binary_trees;
 
 import binary_trees.tree.TreeNode;
 
+import java.util.ArrayList;
+
 /**
  * Created by alexisherrera on 8/31/17.
  */
@@ -15,12 +17,38 @@ public class P5 {
     //approach: my first approach is to use a depth first search approach in which I construct the numbers
     //by reaching the leaves. Once I reach the leaves I convert the binary number into a digit and then add it
 
-    public static int rootToLeafSum(TreeNode root, int sum) {
-        if (root == null) {
-            //dealt with it in leetcode
+    public static void rootToLeafSum(TreeNode root, ArrayList<String> nums, String num) {
+
+
+        //we gotta check leaves because they will go on to two basecases (one for each subtree).
+        if (root.left == null && root.right == null) {
+            num = num + root.data;
+            nums.add(num);
+            return;
         }
-        return 0;
+
+        num = num + root.data;
+        rootToLeafSum(root.left, nums, num);
+        rootToLeafSum(root.right, nums, num);
     }
+
+    public static void main(String[] args) {
+        TreeNode tree = new TreeNode();
+        TreeNode leftS = new TreeNode();
+        TreeNode rightS = new TreeNode();
+
+        tree.data = 79;
+        leftS.data = 21;
+        rightS.data = 100;
+        tree.left = leftS;
+        tree.right = rightS;
+        ArrayList<String> list = new ArrayList<>();
+        rootToLeafSum(tree, list, "");
+
+
+        System.out.println(list);
+    }
+
 
 
 
