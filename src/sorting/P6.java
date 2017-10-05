@@ -49,7 +49,8 @@ public class P6 {
 
         return result;
 
-        //the complexity of this algorithm is O(n), space is O(n) for result and new interval
+        //the complexity of this algorithm is O(nlgn) FOR THE SORT,
+        // if data already sorted then O(N), space is O(n) for result and new interval
     }
 
     public static boolean intersect(int[] i1, int[] i2) {
