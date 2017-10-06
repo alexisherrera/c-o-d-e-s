@@ -20,15 +20,16 @@ public class P4 {
             return root;
         }
 
-        //search right side and left side
-        TreeNode left = LCA(root.left, a, b);
-
-        if (left == null) {
+        //optimize for what side to search on
+        //if root is larger than both search left
+        if (root.data > a.data && root.data > b.data) {
+            return LCA(root.left, a, b);
+        }
+        else {
             return LCA(root.right, a, b);
         }
-        return left;
 
-        //in the worst case this program runs in O(n) time, LCA doesnt exist (both a and b smaller than smallest node
-        //in tree). Space is O(h) for recursive depth
+        //in the worst case this program runs in O(h) time, LCA doesnt exist (both a and b smaller than smallest node
+        //in tree). Space is O(h) for recursive depth. We split problem in half each time. essentially binary search.
     }
 }
