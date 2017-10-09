@@ -49,8 +49,6 @@ public class P3 {
 
     //another approach can be using a pre order traversal. we visit root first then sub trees. if it is in there we then
     //check if it is in the other then we return true;
-
-
     public static TreeNode LCABetter(TreeNode a, TreeNode b, TreeNode root) {
         if (root == null) { return null; }
         if (root == a) { return root; }
