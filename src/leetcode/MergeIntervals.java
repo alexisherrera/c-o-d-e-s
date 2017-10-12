@@ -37,7 +37,7 @@ public class MergeIntervals {
             results.add(currInter);
         }
 
-        //running time is O(n) space is O(1).
+        //running time is O(nlgn) space is O(1).
         return results;
     }
 
