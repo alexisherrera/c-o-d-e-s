@@ -48,8 +48,11 @@ public class CourseSchedule {
             }
         }
 
-        //finished visiting all adjacent nodes so unmark current node as visited
+        //finished visiting all adjacent nodes so unmark current node as visited because different paths
+        //may lead to the same node, but if they do not originate from the same node then no cycle occurs
         visited.remove(node);
         return true;
+
+        //the time complexity is O(E + V). This is because we perform a DFS on each node at most once.
     }
 }
