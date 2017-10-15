@@ -20,7 +20,7 @@ public class LongestWordDictDeleting {
             }
         });
 
-        //find the first string in D that is a subsequence of
+        //find the first string in D that is a subsequence of s. then return that string in D.
         for (String str : d) {
 
             char[] cArr = str.toCharArray();
@@ -37,5 +37,6 @@ public class LongestWordDictDeleting {
         }
 
         return "";
+        //time complexity is O(n * s *lgn), n is length of d and s is the length of the longest string in d.
     }
 }
