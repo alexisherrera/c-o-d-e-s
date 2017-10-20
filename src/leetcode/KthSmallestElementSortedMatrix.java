@@ -19,7 +19,7 @@ public class KthSmallestElementSortedMatrix {
     });
 
 
-    //fill the priority queue with the first k elements in the top row
+    //fill the priority queue with the first k elements in the top roww
         for (int i = 0; i < Math.min(matrix[0].length, k); i++) {
         minheap.add(new int[] {0, i});
             //at most k entries (klogk).
