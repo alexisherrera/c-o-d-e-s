@@ -20,7 +20,7 @@ public class Main {
     }
 
     public static void main(String[] args) {
-	    int[] arr = new int[] { 0};git
+	    int[] arr = new int[] { 0};
         System.out.println(bs(arr));
     }
 }
