@@ -27,10 +27,12 @@ public class WordLadder {
                     char[] cWordArr = currWord.toCharArray();
 
                     for (int j = 0; j < 26; j++) {
-                        cWordArr[i] = (char) ((int)'a' + j);
+                        cWordArr[i] = (char) ((int) 'a' + j);
 
                         String nWord = new String(cWordArr);
-                        if (nWord.equals(endWord) && wordsToVisit.contains(nWord)) { return length + 1; }
+                        if (nWord.equals(endWord) && wordsToVisit.contains(nWord)) {
+                            return length + 1;
+                        }
                         if (wordsToVisit.contains(nWord)) {
                             q.add(nWord);
                             wordsToVisit.remove(nWord);
@@ -41,5 +43,6 @@ public class WordLadder {
             length++;
         }
         return 0;
+        //Running time is n words, and lets say they are s long. we at most iterate through each word O(s) times. Running time is O(n*s)
     }
 }
