@@ -15,7 +15,7 @@ public class SpiralMatrixTwo {
 
         while (true) {
 
-            //top row
+            //top row imp
             for (int col = left; col <= right; col++) {
                 result[top][col] = start++;
             }
