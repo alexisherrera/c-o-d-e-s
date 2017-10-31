@@ -89,15 +89,7 @@ public class Main {
     }
 
     public static void main(String[] args) {
-	    int[][] test = new int[][] {
-                {5, 7, 8, 6, 3},
-                {0, 0, 7, 0, 4},
-                {4, 6, 3, 4, 9},
-                {3, 1, 0, 5, 8}
-        };
-
-        Main m = new Main();
-
-        System.out.println(m.HungryRabit(test));
+        //test neg mod
+        System.out.println((-1 % 2));
     }
 }
