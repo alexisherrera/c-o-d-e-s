@@ -5,6 +5,7 @@ import java.util.*;
  * Created by alexisherrera on 10/30/17.
  */
 public class WordLadder {
+    //update
     public int ladderLength(String beginWord, String endWord, List<String> wordList) {
         Set<String> wordsToVisit = new HashSet<>();
         Queue<String> q = new LinkedList<>();
