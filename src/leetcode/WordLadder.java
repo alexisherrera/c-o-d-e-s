@@ -18,7 +18,7 @@ public class WordLadder {
 
         q.add(beginWord);
 
-        //BFS traversal. edit
+        //BFS traversal. editDist
         while (!q.isEmpty()) {
             int sizeOfLevel = q.size();
             for (int k = 0; k < sizeOfLevel; k++) {
