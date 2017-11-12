@@ -44,6 +44,7 @@ public class wordPatternMatch {
         }
 
         return false;
+        //return the bool
 
     }
 }
