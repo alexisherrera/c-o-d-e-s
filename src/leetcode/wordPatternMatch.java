@@ -5,11 +5,12 @@ import java.util.*;
  * Created by alexisherrera on 11/11/17.
  */
 public class wordPatternMatch {
-    public boolean wordPatternMatch(String pattern, String str) {
+    public static boolean wordPatternMatch(String pattern, String str) {
         return helper(pattern, str, new HashMap<>(), new HashSet<>());
     }
 
-    public boolean helper(String pattern, String str, Map<Character, String> map, Set<String> s) {
+    //helper external function
+    public static boolean helper(String pattern, String str, Map<Character, String> map, Set<String> s) {
         if (pattern.length() == 0 && str.length() == 0) { return true; }
         if (pattern.length() == 0 || str.length() == 0) { return false; }
 
@@ -47,4 +48,13 @@ public class wordPatternMatch {
         //return the bool
 
     }
+
+    public static void main(String[] args) {
+        String pattern = "abba";
+        String str = "redbluebluered";
+
+        System.out.println(wordPatternMatch(pattern, str));
+
+    }
+
 }
