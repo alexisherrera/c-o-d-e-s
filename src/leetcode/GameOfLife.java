@@ -16,7 +16,7 @@ public class GameOfLife {
         //IMPORTANT THING is that original states need to be maintained. In other words, 0 needs to rep dead and 1 needs to
         //rep alive to be able to traverse through elements not yet visited.
 
-        //O(mn) time and O(1) space.
+        //O(mn) time and O(1) space. DROPBOX INTERVIEW TODAY
 
         //with this we can mark the board using these states
         int[][] dirs = new int[][] {{-1, -1}, {-1, 0}, {-1, 1}, {0, -1}, {0, 1}, {1, -1}, {1, 0}, {1, 1}};
