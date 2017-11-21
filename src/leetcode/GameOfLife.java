@@ -1,5 +1,7 @@
 package leetcode;
 
+import java.awt.datatransfer.Clipboard;
+
 /**
  * Created by alexisherrera on 11/11/17.
  */
@@ -16,6 +18,7 @@ public class GameOfLife {
         //IMPORTANT THING is that original states need to be maintained. In other words, 0 needs to rep dead and 1 needs to
         //rep alive to be able to traverse through elements not yet visited.
 
+        //I FINISHED THE INTERVIEW
         //O(mn) time and O(1) space. DROPBOX INTERVIEW TODAY
 
         //with this we can mark the board using these states
@@ -29,11 +32,16 @@ public class GameOfLife {
                 for (int[] d : dirs) {
                     int iUpdate = d[0];
                     int jUpdate = d[1];
+
+                    //do we go beyond the board limits
                     if (i + iUpdate >= board.length || i + iUpdate < 0 || j + jUpdate >= board[0].length ||
                             j + jUpdate < 0) continue;
+
+                    //are the surrounding elements next to us alive in previous state
                     if (board[i + iUpdate][j + jUpdate] == 1 || board[i + iUpdate][j + jUpdate] == 2) aliveNeighbors++;
                 }
 
+                //rule handling
                 if (board[i][j] == 1 && (aliveNeighbors == 2 || aliveNeighbors == 3)) board[i][j] = 1;
                 else if (board[i][j] == 0 && aliveNeighbors == 3) board[i][j] = 3;
                 else if (board[i][j] == 1 && aliveNeighbors < 2) board[i][j] = 2;
