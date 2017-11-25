@@ -21,6 +21,7 @@ public class RegularExpressionMatching {
             return (sameFirst && isMatch(s.substring(1), p) ||
                     isMatch(s, p.substring(2)));
         }
+        //regexp matching
         else if (sameFirst) {
             return isMatch(s.substring(1), p.substring(1));
         }
