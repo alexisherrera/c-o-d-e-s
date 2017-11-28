@@ -17,7 +17,7 @@ public class RegularExpressionMatching {
         //check for a star
         if (p.length() >= 2 && p.charAt(1) == '*') {
             //check that first characters match and continue using the same front character.
-            //also check if we can match by skipping wildcard and all characters before
+            //also check if we can match by skipping wildcard and all characters before. update
             return (sameFirst && isMatch(s.substring(1), p) ||
                     isMatch(s, p.substring(2)));
         }
