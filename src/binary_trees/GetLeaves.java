@@ -19,10 +19,9 @@ public class GetLeaves {
         return leaves;
     }
 
-
+    //DP[i] = dP[i- j][i  + 1]
     public static void helper(TreeNode root, List<Integer> leaves) {
         if (root == null) { return; }
-
         //if leaf save it
         if (root.left == null && root.right == null) {
             leaves.add(root.data);
